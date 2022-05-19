@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+  <section class="text-gray-400 bg-gray-900 body-font">
+    <div class="container px-5 py-24 mx-auto flex flex-wrap items-center" style="height:88.9vh">
+      <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">
+        <h1 class="title-font font-medium text-3xl text-white">Graphical Password Authentication</h1>
+        <p class="leading-relaxed mt-4">In order to Satisfy the shortcomings of the existing Text based Password Systems and to make the systems more secure from hacking and predictability we are developing a new generation of passwords that are based on images that cannot be easily predicted or hack.</p>
+      </div>
+      <div class="lg:w-2/6 md:w-1/2 bg-gray-800 bg-opacity-50 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
+        <h2 class="text-white text-lg font-medium title-font mb-5">Login</h2>
+        <form action = "{{url_for("login")}}" method = "post">
+        <div class="relative mb-4">
+          <label for="email" class="leading-7 text-sm text-gray-400">Email</label>
+          <input type="email" id="email" name="email" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-indigo-900 rounded border border-gray-600 focus:border-indigo-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        </div>
+        <!-- <div class="relative mb-4">
+          <label for="full-name" class="leading-7 text-sm text-gray-400">Full Name</label>
+          <input type="text" id="full-name" name="full-name" class="w-full bg-gray-600 bg-opacity-20 focus:bg-transparent focus:ring-2 focus:ring-indigo-900 rounded border border-gray-600 focus:border-indigo-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        </div> -->
+        <button class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Sign In</button>
+        <p class="text-xs mt-3">If you are a new user? <a href="./register" style="color:#4949a7;">Register.</a></p>
+      </div></form>
+    </div>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          {% for message in messages %}
+          <div class="bar error">
+            <i class="ico">&#9747;</i>{{ message }}
+          </div>
+          {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </section>
+  {% include 'footer.html' %}  
+</body>
+</html>

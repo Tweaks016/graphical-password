@@ -24,10 +24,7 @@ def inOut(center_x, center_y, x, y, r):
 	return False
 
 # Registration Phase
-def registerUser():
-	userName = str(input("[+] Enter your username: ")).strip()
-	name = str(input("[+] Enter your Name: ")).strip()
-	email = str(input("[+] Enter your Email ID: ")).strip()
+def registerUser(userName, name, email):
 	# list of images [ file names ]
 	files = os.listdir('.\static-images')
 	random.shuffle(files)
@@ -59,8 +56,7 @@ def registerUser():
 		print("Registration Failure [username/email is already registered]\n")
 	return val
 
-def loginUser():
-	email = str(input('[+] Enter your email address:')).strip()
+def loginUser(email):
 	newval = db.retrieveUserDetails(email)
 	login_stats = []
 	files = tuple(newval[3].keys())
@@ -81,43 +77,9 @@ def loginUser():
 			if val is True:
 				login_stats.append(True)
 	if len(login_stats) == 3 and login_stats == [True, True, True]:
-		os.system("cls")
-		print("\nLogin Successful\n")
-		print("--------------------------------")
-		print(f"\n  Welcome {newval[1]}\n")
-		return False
+		os.system("cls")		
+		return False, newval[1]
 	else:
 		os.system("cls")
-		print("\nLogin Failed [email ID or password is incorrect or you are not registered]\n")
+		# print("\nLogin Failed [email ID or password is incorrect or you are not registered]\n")
 		return True
-
-# driver Function
-if __name__ == '__main__':
-	while True:
-		print("\n [+] Select a option:\n -> 1] Login \n -> 2] Register as new user \n -> 3] Exit\n")
-		inval = int(input())
-		os.system('cls')
-
-		while True:
-			if inval == 1:
-				bool_login = loginUser()			
-				if bool_login is False:
-					ask_user = str(input("Enter (Y or y) to logout:"))
-					os.system('cls')
-					if ask_user in ('Y', 'y'):
-						break
-					break
-				break
-					
-			
-			elif inval == 2:
-				bool_val = registerUser()
-				if bool_val is False:
-					break
-				break
-			
-			elif inval == 3:
-				sys.exit()
-			else:
-				print("\n [-] Option not found ")
-				break

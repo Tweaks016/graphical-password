@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <title>Dashboard</title>
+</head>
+<body>
+  <section class="text-gray-400 bg-gray-900 body-font">
+    <div class="container px-5 py-24 mx-auto"  style="height: 100vh">
+      <div class="text-center mb-20">
+        <h1 class="sm:text-3xl text-2xl font-medium title-font text-white mb-4">Welcome {{user}}</h1>
+        <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-400 text-opacity-80">You have successfully logged in with your Graphical Password</p>
+        <div class="flex mt-6 justify-center">
+          <div class="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
+        </div><br>
+        <p align="justify" class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-400 text-opacity-80">
+          In a graphical password authentication system, the user has to select from images, in a specific order, presented to them in a graphical user interface (GUI). 
+          According to a study, the human brain has a greater capability of remembering what they see(pictures) rather than alphanumeric characters.
+          Therefore, graphical passwords overcome the disadvantage of alphanumeric passwords. Graphical Password Authentication has three major categories based on the activity they use for authentication of the password:
+          <br><br>Recognition based Authentication: A user is given a set of images and he has to identify the image he selected during registration.
+          <br><br>Recall based Authentication: A user is asked to reproduce something that he created or selected at the registration stage. For example, in the Passpoint scheme, a user can click any point in an image to create the password and a tolerance around each pixel is calculated. During authentication, the user has to select the points within the tolerance in the correct sequence to login.
+          <br><br>Cued Recall: Cued Click Points (CCP) is an alternative to the PassPoints technique. In CCP, users click one point on each image rather than on five points on one image (unlike PassPoints). It offers cued-recall and instantly alerts the users if they make a mistake while entering their latest click-point.
+        </p>
+      </div>      
+      <form action="{{url_for('logout')}}" method="post">      
+        <button class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Logout</button>
+      </form>
+    </div>
+  </section>
+</body>
+</html>
